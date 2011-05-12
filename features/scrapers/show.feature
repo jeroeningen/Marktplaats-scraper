@@ -6,6 +6,6 @@ Feature: Display the result of a scraper
 	Scenario: Display the result of a scraper
 		Given I am on /scrapers
 		And I should see "Alle scrapers"
-		When I follow "Scrape it"
+		When I follow "Scrape the first page of 'Nike' advertisements"
 		Then I should see "Even geduld a.u.b. De laadtijd is ca. 30 seconden."
 		And I should see the result of the scraped page

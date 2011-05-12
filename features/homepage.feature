@@ -6,4 +6,4 @@ Feature: Display homepage
 	Scenario: Display the homepage
 		When I am on the homepage
 		Then I should see "Alle scrapers" within "h1"
-		And I should see "Scrape it"
+		And I should see "Scrape the first page of 'Nike' advertisements"
