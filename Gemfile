@@ -6,11 +6,7 @@ gem 'sass'
 gem 'mysql2', '0.2.7'
 gem 'nokogiri'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-# Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 group :development, :test do
   gem 'cucumber-rails'
