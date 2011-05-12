@@ -1,0 +1,12 @@
+= THE APPLICATION
+This application is developed against Rails 3.0.7. 
+It scrapes the first 30 advertisements following page:
+- http://kopen.marktplaats.nl/search.php?from_searchbox_advanced=1&q=nike&g=1776
+
+
+= NOTES
+
+- The Marktplaats scraper does not handle any exceptions Yet.
+For example if a price changes or an advertisement is removed, the marktplaats scraper tests wille report an error
+
+- You need to run a virtual frame buffer on 'DISPLAY:=.99' to run the autotest

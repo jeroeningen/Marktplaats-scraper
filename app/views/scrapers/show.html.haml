@@ -1,0 +1,51 @@
+%h1 Resultaat van de scraper 'Marktplaats'
+- @advertisements.each_with_index do |advertisement, i|
+  %h2
+    = raw "Advertentie: #{link_to(advertisement.title, advertisement.url, :target => :blank)}"
+  %table
+    %tr
+      %td
+        %label Advertentienummer
+      %td
+        = advertisement.advertisement_nr
+    %tr
+      %td
+        %label Advertentie omschrijving
+      %td
+        = raw advertisement.description
+    %tr
+      %td
+        %label Userid van de plaatser
+      %td= advertisement.user_id
+    %tr
+      %td
+        %label Naam van advertentieplaatser
+      %td
+        = advertisement.user_name
+    %tr
+      %td
+        %label Woonplaats en provincie
+      %td
+        = advertisement.location
+    %tr
+      %td
+        %label Advertentieprijs
+      %td
+        = "EUR. #{sprintf("%.2f", advertisement.price.to_f / 100).gsub(".", ",")}"
+    %tr
+      %td
+        %label Advertentieprijs text
+      %td
+        = advertisement.price_type
+    %tr
+      %td
+        %label Advertentiedatum
+      %td
+        = advertisement.date
+    %tr
+      %td
+        %label Adverentietijd
+      %td
+        = advertisement.time
+  - unless @advertisements.size - 1 == i
+    %div.line

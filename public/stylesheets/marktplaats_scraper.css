@@ -1,0 +1,60 @@
+body {
+  font-family: Lucida Grande, Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+  background: #212121 url("/images/background.gif"); }
+
+div#wrapper {
+  width: 900px;
+  margin: auto; }
+  div#wrapper div#header div#logo {
+    padding: 10px; }
+  div#wrapper div#header div#menu {
+    width: 900px;
+    height: 40px;
+    background: #444444;
+    color: white; }
+    div#wrapper div#header div#menu ul {
+      padding: 10px; }
+      div#wrapper div#header div#menu ul li {
+        list-style: none;
+        float: left;
+        margin: 0 1em; }
+        div#wrapper div#header div#menu ul li a {
+          color: white; }
+        div#wrapper div#header div#menu ul li a.active {
+          color: red; }
+  div#wrapper div#content {
+    background: white;
+    min-height: 575px;
+    width: 840px;
+    padding: 20px 20px 20px 40px;
+    float: left;
+    border-bottom: 20px solid black; }
+    div#wrapper div#content div.line {
+      border-top: solid 1px black; }
+    div#wrapper div#content label {
+      font-weight: bold;
+      display: block; }
+    div#wrapper div#content p label {
+      width: 20%; }
+    div#wrapper div#content p input[type="text"] {
+      float: right;
+      margin: -21px 0 0; }
+    div#wrapper div#content table {
+      margin: 0 0 2em; }
+      div#wrapper div#content table td {
+        padding: 5px; }
+    div#wrapper div#content div#zipResult {
+      padding: 10px 0; }
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px; }
+
+a {
+  color: #000; }
+
+a:hover {
+  color: #fff;
+  background-color: #000; }

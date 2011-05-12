@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title
+      Marktplaats Scraper
+    = stylesheet_link_tag "marktplaats_scraper", "jquery.fancybox-1.3.4"
+    = javascript_include_tag "jquery-1.5.2.min", "rails", "jquery.fancybox-1.3.4"
+    = csrf_meta_tag
+  %body
+    %div#wrapper
+      %div#header
+        %div#logo
+          = link_to(image_tag("logo.jpg"), root_path)
+        %div#menu
+          = render "layouts/menu"
+      %div#content
+        = yield

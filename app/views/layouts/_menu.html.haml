@@ -1,0 +1,7 @@
+%ul
+  %li
+    - links = ["scraper"]
+    - links.each do |value|
+      %li
+        - path = "#{value.pluralize}_path"
+        = link_to(value.capitalize.pluralize, send(path), active_link?(value.pluralize))

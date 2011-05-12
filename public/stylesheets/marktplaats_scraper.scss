@@ -1,0 +1,84 @@
+$default_background: #212121 url("/images/background.gif");
+$default_padding: 10px;
+$default_margin: 10px;
+$default_width: 900px;
+$default_label_width: 20%;
+
+body { 
+	font-family: Lucida Grande, Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	background: $default_background; 
+}
+
+div#wrapper {
+	width: $default_width;
+	margin: auto;
+	div#header {
+		div#logo {
+			padding: $default_padding;
+		}
+		div#menu {
+			width: $default_width;
+			height: 40px;
+			background: #444444;
+			color: white;
+			ul {
+				padding: $default_padding;
+				li {
+					list-style: none;
+					float: left;
+					margin: 0 1em;
+					a {
+						color: white;
+					}
+					a.active {
+						color: red;
+					}
+				}
+			}
+		}
+	}
+	div#content {
+		$padding_content: $default_padding;
+		background: white;
+		min-height: 575px;
+		width: $default_width - ($padding_content * 6);
+		padding: $padding_content * 2 $padding_content * 2 $padding_content * 2 $padding_content * 4;
+		float: left;
+		border-bottom: 20px solid black;
+		$bottom_margin: 2em;
+		div.line {
+			border-top: solid 1px black;
+		}
+		label {
+			font-weight: bold;
+			display: block;
+		}
+		p {
+			label {
+				width: $default_label_width;
+			}
+			input[type="text"] {
+				float: right;
+				margin: -21px 0 0;
+			}
+		}
+		table {
+			margin: 0 0 $bottom_margin;
+			td {
+				padding: $default_padding / 2;
+			}
+		}
+		div#zipResult{
+			padding: $default_padding 0;
+		}
+	}
+}
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:hover { color: #fff; background-color:#000; }
