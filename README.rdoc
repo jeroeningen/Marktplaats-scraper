@@ -7,7 +7,7 @@ It scrapes the first 30 advertisements of the following page:
 
 = NOTES
 
-- The Marktplaats scraper does not handle any exceptions Yet.
+- The Marktplaats scraper does not handle any exceptions yet.
 For example if a price changes or an advertisement is removed, the marktplaats scraper tests wille report an error
 
 - You need to run a virtual frame buffer on 'DISPLAY:=.99' to run the autotest

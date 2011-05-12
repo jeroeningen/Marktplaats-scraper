@@ -1,3 +1,4 @@
+#scraper_controller
 class ScrapersController < ApplicationController
   def index
   end
