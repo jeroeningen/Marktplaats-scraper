@@ -30,7 +30,7 @@ describe ApplicationHelper do
   
   describe "#scraper_link_fancybox" do
     it "should return the scraper link for the fancybox" do
-      helper.scraperlink_to_fancybox("Scrape the first page of 'Nike' advertisements").should eq("<a href=\"#\" onclick=\"$.fancybox({content: 'Even geduld a.u.b. De laadtijd is ca. 30 seconden.'}); $.ajax({url: '/scrapers/marktplaats', success: function(html){document.getElementsByTagName('html')[0].innerHTML = html;}}); return false;\">Scrape the first page of 'Nike' advertisements</a>")
+      helper.scraperlink_to_fancybox("Scrape de eerste advertentiepagina").should eq("<a href=\"#\" onclick=\"$.fancybox({content: 'Even geduld a.u.b. De laadtijd is ca. 30 seconden.'}); $.ajax({url: '/scrapers/marktplaats', success: function(html){document.getElementsByTagName('html')[0].innerHTML = html;}}); return false;\">Scrape de eerste advertentiepagina</a>")
     end
   end
 end
