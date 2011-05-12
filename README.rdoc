@@ -1,6 +1,7 @@
 = THE APPLICATION
-This application is developed against Rails 3.0.7. 
-It scrapes the first 30 advertisements following page:
+This application is developed against Rails 3.0.7.
+ 
+It scrapes the first 30 advertisements of the following page:
 - http://kopen.marktplaats.nl/search.php?from_searchbox_advanced=1&q=nike&g=1776
 
 
