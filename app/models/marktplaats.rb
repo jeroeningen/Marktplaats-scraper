@@ -1,7 +1,5 @@
 #marktplaats.rb
 class Marktplaats < Scraper
-  attr_accessor :advertisement_nr, :title, :description, :user_id, :user_name, :location, :price, :price_type, :date, :time, :url
-
   #get the advertisement links
   def get_links_with_price
     links = []
@@ -19,18 +17,27 @@ class Marktplaats < Scraper
     links
   end
 
-  #scrape an advertisement using the DOM
-  def scrape
+  #scrape an advertisement using the DOM and return the advertisement
+  def scrape price_type
     source = get_url
     source.encoding = "utf-8"
-    @advertisement_nr = source.css("form#contactBlockASQForm input[name=uad_id]")[0].attributes["value"].value
-    @title = source.css("div#vipLeft div.roundedBoxBlueShadow div.content h1").children[0].text
-    @description = source.css("div#vipTabResult div.l").children.to_s
-    @user_id = source.css("form#contactBlockASQForm input[name=user_id]")[0].attributes["value"].value
-    @user_name = source.css("form#contactBlockASQForm input[name=recipient_nickname]")[0].attributes["value"].value
-    @location = source.css("div#vipRight div.roundedBoxYellowShadow div.content p.lh20").children[0].to_s
-    @price = get_price(source)
-    @date, @time = source.css("div#vipLeft div.roundedBoxBlueShadow div.content div.l table.adTop td.adSummary li nobr").children.to_s.gsub("sinds ", "").split(",")
+    advertisement = Advertisement.new
+    advertisement.advertisement_nr = source.css("form#contactBlockASQForm input[name=uad_id]")[0].attributes["value"].value
+    advertisement.title = source.css("div#vipLeft div.roundedBoxBlueShadow div.content h1").children[0].text
+    advertisement.description = source.css("div#vipTabResult div.l").children.to_s
+    advertisement.advertisement_owner_id = source.css("form#contactBlockASQForm input[name=user_id]")[0].attributes["value"].value
+    advertisement.advertisement_owner_name = source.css("form#contactBlockASQForm input[name=recipient_nickname]")[0].attributes["value"].value
+    advertisement.location = source.css("div#vipRight div.roundedBoxYellowShadow div.content p.lh20").children[0].to_s
+    advertisement.price = get_price(source)
+    advertisement.price_type = price_type
+    advertisement.url = @url
+    datetime = source.css("div#vipLeft div.roundedBoxBlueShadow div.content div.l table.adTop td.adSummary li nobr").children.to_s.gsub("sinds ", "").gsub(",", "")
+    advertisement.datetime = DateTime.strptime(datetime,"%d-%m-%y %H:%M")
+    if advertisement.save
+      advertisement
+    elsif !advertisement.errors[:advertisement_nr].include?("has already been taken")
+      raise "Advertisement save failure!. See: #{advertisement.url}"
+    end
   end
 
   #get the price of an advertisement scraping the javascript
@@ -50,10 +57,8 @@ class Marktplaats < Scraper
   def self.scrape_links url
     advertisements = []
     Marktplaats.new(url).get_links_with_price.each do |link_with_price|
-      advertisement = Marktplaats.new(link_with_price[0])
-      advertisement.price_type = link_with_price[1]
-      advertisement.scrape
-      advertisements << advertisement
+      advertisement_to_scrape = Marktplaats.new(link_with_price[0])
+      advertisements << advertisement_to_scrape.scrape(link_with_price[1])
     end
     advertisements
   end

@@ -12,7 +12,6 @@ describe "scrapers/_show" do
     rendered.should =~ /Woonplaats en provincie/
     rendered.should =~ /Advertentieprijs/
     rendered.should =~ /Advertentiedatum/
-    rendered.should =~ /Adverentietijd/
     rendered.should =~ /Advertentie:/
  
   end

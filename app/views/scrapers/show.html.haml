@@ -16,12 +16,12 @@
     %tr
       %td
         %label Userid van de plaatser
-      %td= advertisement.user_id
+      %td= advertisement.advertisement_owner_id
     %tr
       %td
         %label Naam van advertentieplaatser
       %td
-        = advertisement.user_name
+        = advertisement.advertisement_owner_name
     %tr
       %td
         %label Woonplaats en provincie
@@ -41,11 +41,6 @@
       %td
         %label Advertentiedatum
       %td
-        = advertisement.date
-    %tr
-      %td
-        %label Adverentietijd
-      %td
-        = advertisement.time
+        = advertisement.datetime
   - unless @advertisements.size - 1 == i
     %div.line
