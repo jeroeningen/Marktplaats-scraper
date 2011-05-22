@@ -14,5 +14,5 @@ Feature: Display the result of a scraper
 		Given I am on /scrapers
 		And I should see "Alle scrapers"
 		When I wait "3" seconds
-		And I follow "Results"
+		And I follow "Resultaten"
 		Then I should see the result of the scraped page

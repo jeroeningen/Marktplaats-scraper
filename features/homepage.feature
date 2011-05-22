@@ -6,4 +6,5 @@ Feature: Display homepage
 	Scenario: Display the homepage
 		When I am on the homepage
 		Then I should see "Alle scrapers" within "h1"
-		And I should see "Scrape de eerste advertentiepagina"
+		And I should see "Start de scraper"
+		And I should see "Resultaten"
