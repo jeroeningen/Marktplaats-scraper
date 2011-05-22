@@ -5,6 +5,7 @@ gem 'haml'
 gem 'sass'
 gem 'mysql2', '0.2.7'
 gem 'nokogiri'
+gem 'delayed_job'
 
 gem 'capistrano'
 

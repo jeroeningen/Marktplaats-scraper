@@ -39,5 +39,21 @@ describe Marktplaats do
       advertisements.size.should == 30
       advertisements[0].advertisement_nr.should_not eq(advertisements[1].advertisement_nr) 
     end
+    
+    it "should scrape the links in the background" do
+      Marktplaats.scrape_links_in_background(url).should eq([@advertisement])
+    end
+    
+    it "should get the next page" do
+      marktplaats = Marktplaats.new(url)
+      marktplaats.next_page
+      marktplaats.url.should_not eq(url)
+    end
+    
+    it "should scrape the links on each page" do
+      marktplaats = Marktplaats.new(url)
+      marktplaats.stub!(:next_page).and_return ""
+      marktplaats.scrape_links_for_each_page.should be_nil
+    end
   end
 end

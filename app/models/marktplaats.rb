@@ -33,11 +33,8 @@ class Marktplaats < Scraper
     advertisement.url = @url
     datetime = source.css("div#vipLeft div.roundedBoxBlueShadow div.content div.l table.adTop td.adSummary li nobr").children.to_s.gsub("sinds ", "").gsub(",", "")
     advertisement.datetime = DateTime.strptime(datetime,"%d-%m-%y %H:%M")
-    if advertisement.save
-      advertisement
-    elsif !advertisement.errors[:advertisement_nr].include?("has already been taken")
-      raise "Advertisement save failure!. See: #{advertisement.url}"
-    end
+    advertisement.save
+    advertisement
   end
 
   #get the price of an advertisement scraping the javascript
@@ -61,5 +58,30 @@ class Marktplaats < Scraper
       advertisements << advertisement_to_scrape.scrape(link_with_price[1])
     end
     advertisements
+  end
+  
+  #scrape links for each page
+  def scrape_links_for_each_page
+    Marktplaats.scrape_links(url)
+    while next_page != "" do
+      Marktplaats.scrape_links(url)
+    end
+  end
+  
+  #scrape the advertisement in the background and return all the current available advertisements
+  def self.scrape_links_in_background(url)
+    marktplaats = Marktplaats.new(url)
+    marktplaats.delay.scrape_links_for_each_page
+    Advertisement.all
+  end
+  
+  #find the next page and set the url
+  def next_page
+    anchors = get_url.css("a.paginatorActive")
+    if anchors.last.children[0].text == "volgende"
+      @url = anchors.last.attributes["href"].value
+    else
+      @url = ""
+    end
   end
 end
