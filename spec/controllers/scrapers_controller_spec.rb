@@ -8,7 +8,7 @@ describe ScrapersController do
       get :index
       should respond_with :success
       response.body.should =~ /Alle scrapers/
-      response.body.should =~ /Scrape de eerste advertentiepagina/
+      response.body.should =~ /Start de scraper/
     end
   end
 

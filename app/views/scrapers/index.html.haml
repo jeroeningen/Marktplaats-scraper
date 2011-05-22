@@ -8,4 +8,6 @@
       %label
         = "Nike:"
     %td
-      = scraperlink_to_fancybox "Scrape de eerste advertentiepagina"
+      = scraperlink_to_fancybox "Start de scraper"
+    %td
+      = link_to "Results", scraper_path("marktplaats", :result => true)

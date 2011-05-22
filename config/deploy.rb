@@ -9,9 +9,9 @@ require 'capistrano/ext/multistage'
 
 set :scm, :git
 
-role :web, "localhost"
-role :app, "localhost"
-role :db, "localhost", :primary => true
+role :web, "localhost", "192.168.178.37"
+role :app, "localhost", "192.168.178.37"
+role :db, "localhost", "192.168.178.37", :primary => true
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
@@ -23,7 +23,7 @@ namespace :deploy do
   end
   
   task :bundle_install do
-    run " cp -R #{previous_release}/vendor/bundle #{release_path}/vendor" if File.exists?("#{previous_release}/vendor/bundle") if previous_release
+    run " cp -R #{previous_release}/vendor/bundle #{release_path}/vendor; true" if File.exists?("#{previous_release}/vendor/bundle")
     run "export PATH=$PATH:/var/lib/gems/1.8/bin/ && cd #{release_path} && bundle install --deployment"
   end
   task :symlink_shared do
