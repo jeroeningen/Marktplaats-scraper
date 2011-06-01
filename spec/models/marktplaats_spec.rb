@@ -15,20 +15,20 @@ describe Marktplaats do
     end
 
     it "should scrape the advertisement data for a given advertisement url and return an advertisement" do
-      scraper = Marktplaats.new("http://kleding-schoenen-heren.marktplaats.nl/schoenen/1000017066-ecco-track-als-nieuw-maat-47.html?return=eJwty%2B0KwiAYhuFzGWz%2FmtO1FQ6JdSbiLGV%2B4esgis69V%2BjfdT%2FwSE75x%2FJhAU6vlDegZVZmMaUkTsgekw69l3kvyUlZoA%2BO7E5vNjxPRmcdCCgTdUCo%2Bcx6U7y7vZyg3QaixHZcaTve04EYEI7W5XKZqxkaP5UF%2BbYJCY8NMOqp%2FE8e9zUcXmerMCNYbNaldIihS2KaWLN8fy3TPVg%3D&fta=eNo1kF1uwyAQhO%2FCQ54Bg4FFvkKvEK35SS05DQp2GjXK3Ys39tunmYFZDYKBVwULbL3P5wfOlfkKxgF7zoM4xTosNxC%2BrMD9LEAY0%2FtZQq%2Bknxf4m4qvOVbwZWmBa4Gf9ZruU%2FC3OoE8lbIO%2FFQGreX2rQJW8JKYn6ApTeiATZEaZd8qhU08Bo3PbnSjSRgIeEBSoklW72DyBiElIymTeCZrzLnvKSNVMAS5w7EBCrUDV8mmA7oddEfhLnTmAFJGTJEqItqe7oncSUHtyvWWFGEdWUE7PR5gDqDDskK5WyjIGpV27vNzH%2Bl5tsqqT0U2bltFtIGWW8FYz3P6uSzf23S8GW2sKz7P25ptvtjmVNuIwPCX%2Ba8dH8wjcHi93%2F8nQpOi&fta_ind=3&df=1&fs=1")
+      scraper = Marktplaats.new("http://kleding-schoenen-heren.marktplaats.nl/schoenen/423439884-lowa-wandelschoen.html?return=eJwty%2B0KgjAUxvF7EfRbzqlZTEbYnYy52nAvh50JUXTvHaFvv%2F8DjxJcfJzoZhT8ykWFRmVtZ1sKCMa2BCa2QeWtgFeqYBs927xZXXyerMkmMtQ2mUjQ09i3tgR%2Fe3nJmxVlSfWw8Hq4w07oCJ4fy%2BUyHe7J9DlYiG8HRHysSHGcyv8UaF%2FiHkx2mjKho%2B4bgF12DcjzOFbz9wct1j1Z&df=1&fta=eNot0FluwyAQBuC78JBnhs1mkK%2FQK0SsqSWnQcFOo0a5e1ny9mlgFv0WJ3wVnJEc9%2B38sFshpuCkkTy3BU6hLPsNweQDqdkAYZqU2Rgqwcy249%2BaTUmhoMl7%2FXDN%2BHNc43315lZWZKecj4We8iKFaGMFkmwvkZgVa6UWOJI19I1M1ZWgeXBOwrPBWkU7lEiyQzqZOgQk0cEi9QPeuwHN7YBgH9B5tEOax2RgbrRTP7OG2kzTgAyfClDV4RL0dj8L3u%2FxQk8DlI7DXLRSD1DbVzhvZT%2FMaYDYIZnq9zgeIx%2BYxejiTIoBiH2yA%2Bd0SwVqQPst21DOW%2Fy57N8tOlofalhX%2Bzy3NGt8AaVqVYbE%2FhLz9eGDGIsUX%2B%2F3P0gKjSg%3D&fta_ind=6&fs=1")
       advertisement = scraper.scrape ""
-      advertisement.advertisement_nr.should == 1000017066
-      advertisement.title.should == "Ecco track als nieuw maat 47" 
-      advertisement.description.should =~ /Kunnen in overleg worden thuisbezorgd./
-      advertisement.advertisement_owner_id.should == 110214
-      advertisement.advertisement_owner_name.should == "-"
-      advertisement.location.should =~ /Heusden gem Heusden, Noord-Brabant/
-      advertisement.price.should == 7000
-      advertisement.datetime.should == "Tue, 25 Jan 2011 9:56:00".to_datetime
+      advertisement.advertisement_nr.should == 423439884
+      advertisement.title.should == "lowa wandelschoen"
+      advertisement.description.should =~ /Kleur zwart navy<br><br>/
+      advertisement.advertisement_owner_id.should == 14159957
+      advertisement.advertisement_owner_name.should == "chamarshoes"
+      advertisement.location.should =~ /Kerkrade, Limburg/
+      advertisement.price.should == 15995
+      advertisement.datetime.should == "Wed, 16 Feb 2011 11:08:00".to_datetime
     end
     
     it "should get the price" do
-      scraper = Marktplaats.new("http://kleding-schoenen-heren.marktplaats.nl/schoenen/451195180-state-of-art-nieuw-combi-bruin-maat-40.html?return=eJwVylsKgzAQheG9CPpWY7REiIjYnYSYNsHcyIxQWrr3Tt6%2B%2F3CU5PLr5LCA5ELIBowq2i4WMUvGzpRN7IMqJ2avFEIfPTu9OVx83awpJjLQNplI0OI%2B9haD395%2B5d0BK6Z22nk7PTyvmGdRPZLpWonEj8tEeB5AQcp1HAiB9j1ewRSnKRM46rHL%2BVqHZvn9AcPiOaQ%3D&df=1&fta=eNo9kV1uwyAQhO%2FCQ57NPyzKFXqFaG1waokkVnBSq1HuXhzWffuYHc2uBgQLrwIO2OOeT0%2FMhYUCpr7XfOSHWI7LDXjIHLi1JmQBRomQF%2Fid5lDGWCDMC3ThMsP1cUn3aQi3MoE4zPPj2G1ZCtiM58TCVHMKSGBT%2FCyRorLs0alOyHUDLTxfm8L9yjGOhgtFoHiFXvtoRYWk%2BnoQgdk81qL7V8TQoBOOQKYP4Gh9g8GqBv3YNUh2B440GsiDoyBwkkZ9T4qmQK9iA%2BdJMZFyPNrdwxvo%2FR5lBlL2wySSYpMmxZFZuLbCj448zuqtS16rXG4zxnLK6Xpevre6TR14YBdcT9sP1NIjaC2qKoDhDwtfhE8WEDp4vd9%2Fne6hlg%3D%3D&fta_ind=10&fs=1")
+      scraper = Marktplaats.new("http://kleding-schoenen-heren.marktplaats.nl/schoenen/454075299-gaastra-schoenen-maat-43.html?return=eJwVylsKgzAQheG9CPpWY7REiIjYnYSYNsHcyIxQWrr3Tt6%2B%2F3CU5PLr5LCA5ELIBowq2i4WMUvGzpRN7IMqJ2avFEIfPTu9OVx83awpJjLQNplI0OI%2B9haD395%2B5d0BK6Z22nk7PTyvmGdRPZLpWonEj8tEeB5AQcp1HAiB9j1ewRSnKRM46rHL%2BVqHZvn9AcPiOaQ%3D&df=1&fs=1")
       scraper.get_price(Marktplaats.new(scraper.url).get_url).should == "0"
       scraper.url = "http://kleding-schoenen-heren.marktplaats.nl/schoenen/448463929-supervette-nike-air-max-1-87-one-nieuw-echt.html?return=eJwVylsKgzAQheG9CPpWY7REiIjYnYSYNsHcyIxQWrr3Tt6%2B%2F3CU5PLr5LCA5ELIBowq2i4WMUvGzpRN7IMqJ2avFEIfPTu9OVx83awpJjLQNplI0OI%2B9haD395%2B5d0BK6Z22nk7PTyvmGdRPZLpWonEj8tEeB5AQcp1HAiB9j1ewRSnKRM46rHL%2BVqHZvn9AcPiOaQ%3D&df=1&fta=eNo10d2OgyAQBeB34aLX%2FAjIkL5CX6EZRLomtCXFds02fffFOt59zhzBHBEsvCv0wJ6PfH5hrsxXMO15yUdxiPU430H4LEBYa3yWYDrp8wx%2FU%2FE1xQq%2BzMD9tcDteR0f0%2BDvdQJ5KOV55OtZHbCCl5H5qZ1TQQGb4vcSJZtVcCGZgIsK2Es0acPowiIwWGXQEaJtQN3LPq6TwHtnNpie0OlEUG6DGuUGiYHCHUHq7wrTOPA9o2hi9rC0G8QeTqKnjAoEzjdETRgGS3CJYDXB7Cu5r6QjcEJIdEWI4duGMiO9Hoawgz4VtVm7FK3K%2BV4w1nMeb5f5Z63btIUDdsXlvP6BVnoEbWSbSmD4y%2FyJ%2BGIegcP78%2FkHDi%2BnHw%3D%3D&fta_ind=10&fs=1"
       scraper.get_price(Marktplaats.new(scraper.url).get_url).should == "9000"
