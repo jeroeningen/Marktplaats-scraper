@@ -15,23 +15,22 @@ describe Marktplaats do
     end
 
     it "should scrape the advertisement data for a given advertisement url and return an advertisement" do
-      scraper = Marktplaats.new("http://kleding-schoenen-heren.marktplaats.nl/schoenen/423439884-lowa-wandelschoen.html?return=eJwty%2B0KgjAUxvF7EfRbzqlZTEbYnYy52nAvh50JUXTvHaFvv%2F8DjxJcfJzoZhT8ykWFRmVtZ1sKCMa2BCa2QeWtgFeqYBs927xZXXyerMkmMtQ2mUjQ09i3tgR%2Fe3nJmxVlSfWw8Hq4w07oCJ4fy%2BUyHe7J9DlYiG8HRHysSHGcyv8UaF%2FiHkx2mjKho%2B4bgF12DcjzOFbz9wct1j1Z&df=1&fta=eNot0FluwyAQBuC78JBnhs1mkK%2FQK0SsqSWnQcFOo0a5e1ny9mlgFv0WJ3wVnJEc9%2B38sFshpuCkkTy3BU6hLPsNweQDqdkAYZqU2Rgqwcy249%2BaTUmhoMl7%2FXDN%2BHNc43315lZWZKecj4We8iKFaGMFkmwvkZgVa6UWOJI19I1M1ZWgeXBOwrPBWkU7lEiyQzqZOgQk0cEi9QPeuwHN7YBgH9B5tEOax2RgbrRTP7OG2kzTgAyfClDV4RL0dj8L3u%2FxQk8DlI7DXLRSD1DbVzhvZT%2FMaYDYIZnq9zgeIx%2BYxejiTIoBiH2yA%2Bd0SwVqQPst21DOW%2Fy57N8tOlofalhX%2Bzy3NGt8AaVqVYbE%2FhLz9eGDGIsUX%2B%2F3P0gKjSg%3D&fta_ind=6&fs=1")
+      scraper = Marktplaats.new("http://kleding-schoenen-heren.marktplaats.nl/schoenen/456527419-nikies.html?return=eJwFwdsJgDAMAMBdOkCrIH6kiLMEDDb0YWiiUMTdvUOY4WWYosK6gKsjJjOBEB7q%2BRJqvmLPJgXR1LcSbqWOR%2BUW6vCSZLchtBVW43aqi98Pmwgdxw%3D%3D&df=1")
       advertisement = scraper.scrape ""
-      advertisement.advertisement_nr.should == 423439884
-      advertisement.title.should == "lowa wandelschoen"
-      advertisement.description.should =~ /Kleur zwart navy<br><br>/
-      advertisement.advertisement_owner_id.should == 14159957
-      advertisement.advertisement_owner_name.should == "chamarshoes"
-      advertisement.location.should =~ /Kerkrade, Limburg/
-      advertisement.price.should == 15995
-      advertisement.datetime.should == "Wed, 16 Feb 2011 11:08:00".to_datetime
+      advertisement.advertisement_nr.should == 456527419 
+      advertisement.title.should == "Gezocht: Nikies"
+      advertisement.description.should =~ /Weet iemand waar deze te krijgen zijn in Nederland/
+      advertisement.advertisement_owner_id.should == 16599384
+      advertisement.advertisement_owner_name.should == "Jantine de Rooy"
+      advertisement.location.should =~ /Nederland, Buitenland/
+      advertisement.datetime.should == "Fri, 10 Jun 2011 11:16:00".to_datetime
     end
     
     it "should get the price" do
-      scraper = Marktplaats.new("http://kleding-schoenen-heren.marktplaats.nl/schoenen/454075299-gaastra-schoenen-maat-43.html?return=eJwVylsKgzAQheG9CPpWY7REiIjYnYSYNsHcyIxQWrr3Tt6%2B%2F3CU5PLr5LCA5ELIBowq2i4WMUvGzpRN7IMqJ2avFEIfPTu9OVx83awpJjLQNplI0OI%2B9haD395%2B5d0BK6Z22nk7PTyvmGdRPZLpWonEj8tEeB5AQcp1HAiB9j1ewRSnKRM46rHL%2BVqHZvn9AcPiOaQ%3D&df=1&fs=1")
+      scraper = Marktplaats.new("http://kleding-schoenen-heren.marktplaats.nl/schoenen/456527419-nikies.html?return=eJwFwdsJgDAMAMBdOkCrIH6kiLMEDDb0YWiiUMTdvUOY4WWYosK6gKsjJjOBEB7q%2BRJqvmLPJgXR1LcSbqWOR%2BUW6vCSZLchtBVW43aqi98Pmwgdxw%3D%3D&df=1")
       scraper.get_price(Marktplaats.new(scraper.url).get_url).should == "0"
-      scraper.url = "http://kleding-schoenen-heren.marktplaats.nl/schoenen/448463929-supervette-nike-air-max-1-87-one-nieuw-echt.html?return=eJwVylsKgzAQheG9CPpWY7REiIjYnYSYNsHcyIxQWrr3Tt6%2B%2F3CU5PLr5LCA5ELIBowq2i4WMUvGzpRN7IMqJ2avFEIfPTu9OVx83awpJjLQNplI0OI%2B9haD395%2B5d0BK6Z22nk7PTyvmGdRPZLpWonEj8tEeB5AQcp1HAiB9j1ewRSnKRM46rHL%2BVqHZvn9AcPiOaQ%3D&df=1&fta=eNo10d2OgyAQBeB34aLX%2FAjIkL5CX6EZRLomtCXFds02fffFOt59zhzBHBEsvCv0wJ6PfH5hrsxXMO15yUdxiPU430H4LEBYa3yWYDrp8wx%2FU%2FE1xQq%2BzMD9tcDteR0f0%2BDvdQJ5KOV55OtZHbCCl5H5qZ1TQQGb4vcSJZtVcCGZgIsK2Es0acPowiIwWGXQEaJtQN3LPq6TwHtnNpie0OlEUG6DGuUGiYHCHUHq7wrTOPA9o2hi9rC0G8QeTqKnjAoEzjdETRgGS3CJYDXB7Cu5r6QjcEJIdEWI4duGMiO9Hoawgz4VtVm7FK3K%2BV4w1nMeb5f5Z63btIUDdsXlvP6BVnoEbWSbSmD4y%2FyJ%2BGIegcP78%2FkHDi%2BnHw%3D%3D&fta_ind=10&fs=1"
-      scraper.get_price(Marktplaats.new(scraper.url).get_url).should == "9000"
+      scraper.url = "http://kleding-schoenen-heren.marktplaats.nl/schoenen/456267327-nike-dunk.html?return=eJwVylsKgzAQheG9CPpWNVq0REKxKyjdQUjSJpjL4EQoLd17J2%2FffziSM%2F51vF%2BQs8vAKzRyV3axOQPvui2BiW2Q%2B5bBS5mxjb7bvNEuvk7W7CZ2qGwykaCm89DaHPz17QVrNIqc6nFl9XjzrGCep%2BKBTNfCTPw4IOJTIwUJytgTAu1rPILZnaJM6KiHBuAQfQMJs0raCNZPl%2FujWn5%2FjqY%2B1w%3D%3D&df=1&fta=eNpN0UtuwyAQBuC7sMiaGczDg3KFquoFIgw4teTEKDhp1Ch3Lw606u7jhxnQ4EjTI5Mhdr3Mh5ubM7Nl2RG7z3vYhbxfFwI7A4HWys5IqkM7r%2FQ9JZvHkMmmlbg9JTpfT%2FEyebvkiXCX0nXPd2nJq19C3ANX5v1j611aJ3eMzE6lbyZBbAqvSwUWi8EZBXG4w4A9gOwLBJjeV%2FQQXAWi2s44Y0azgftB8v%2BJQFBirNDoK6SGig5aIuIvRNzKO98bXhPgrZyH1%2B3IY1QNg6iQ9T3IUdUXjuMfMFbEKBsQKrzqKobIK5wfG0Qr17JVae7altQVXWyH0bQEQgOXcpsllFGuS3IhH%2BZ4Pq6f27hV2eiJndz9sP1AGXog2fGSIjH3xexb441ZR5wez%2BcP%2FKCfbQ%3D%3D&fta_ind=9&fs=1"
+      scraper.get_price(Marktplaats.new(scraper.url).get_url).should == "3995"
     end
     
     it "should scrape the advertisements for a given url" do
