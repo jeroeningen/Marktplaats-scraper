@@ -9,9 +9,9 @@ require 'capistrano/ext/multistage'
 
 set :scm, :git
 
-role :web, "localhost", "192.168.178.37"
-role :app, "localhost", "192.168.178.37"
-role :db, "localhost", "192.168.178.37", :primary => true
+role :web, "localhost", "192.168.178.41"
+role :app, "localhost", "192.168.178.41"
+role :db, "localhost", "192.168.178.41", :primary => true
 namespace :deploy do
   task :start do ; end
   task :stop do ; end

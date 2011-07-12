@@ -7,6 +7,7 @@ gem 'nokogiri'
 gem 'delayed_job'
 
 gem 'capistrano'
+gem 'capistrano-ext'
 
 group :development, :test do
   gem 'cucumber-rails'
