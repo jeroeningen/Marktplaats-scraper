@@ -18,3 +18,8 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'factory_girl'
 end
+
+group 'test' do
+  gem 'vcr'
+  gem 'fakeweb'
+end
